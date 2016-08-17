@@ -45,8 +45,31 @@ public:
     //operators:
     T operator [](int i);
     void operator +=(T value);
-    void operator +=(LinkedList<T> list);
+
+    friend LinkedList<T> operator +(LinkedList<T>& input1, LinkedList<T>& input2) {
+        LinkedList<T> result;
+        result.plusHelper(result, input1);
+        result.plusHelper(result, input2);
+        return result;
+    }
+
+    friend std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
+        ListNode<T>* node = list.front;
+        for (int i = 0; i < list.mysize; i++) {
+            out << node->value;
+            node = node->next;
+        }
+        return out;
+    }
+    friend std::istream& operator >>(std::istream& input, LinkedList<T>& list) {
+        T value;
+        input >> value;
+        list.add(value);
+        return input;
+    }
+
 private:
+    void plusHelper(LinkedList<T>& result, LinkedList<T>& input);
     void freeMemoryHelper(ListNode<T>*& node);
     void checkRange (int i, int max) const;
     ListNode<T>* front;
@@ -192,11 +215,6 @@ template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length
     return result;
 }
 
-template <typename T> std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
-    out << list.toString();
-    return out;
-}
-
 template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
     if (list1.size() != list2.size()) return false;
     if (list1.toString() == list2.toString()) return true;
@@ -216,15 +234,12 @@ template <typename T> void LinkedList<T>::operator +=(T value) {
     add(value);
 }
 
-template <typename T> void LinkedList<T>::operator +=(LinkedList<T> list) {
-    for (int i = 0; i < list.size(); i++) add(list[i]);
-}
-
-template <typename T> LinkedList<T> operator +(LinkedList<T>& list1, LinkedList<T>& list2) {
-    LinkedList<T> _new;
-    for (int i = 0; i < list1.size(); i++) _new.add(list1[i]);
-    for (int i = 0; i < list2.size(); i++) _new.add(list2[i]);
-    return _new;
+template <typename T> void LinkedList<T>::plusHelper(LinkedList<T>& result, LinkedList<T>& input) {
+    ListNode<T>* node = input.front;
+    for (int i = 0; i < input.size(); i++) {
+        result.add(node->value);
+        node = node->next;
+    }
 }
 
 #endif // LINKEDLIST_H
