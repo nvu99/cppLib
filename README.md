@@ -25,28 +25,28 @@ e.g. ```LinkedList<string> stringList;```
 </tr>
 <tr>
   <td>insert(<b>index</b>, <b>value</b>)</td>
-  <td>O(1) if front or end of list, O(N) avg</td>
+  <td>O(1) front/end, O(N) avg</td>
   <td>Inserts the element before the specified index.</td>
 </tr>
 <tr>
   <td>remove(<b>index</b>)</td>
-  <td>O(1) if front of list, O(N) avg</td>
+  <td>O(N)</td>
   <td>Removes the element at the specified index. To be improved.</td>
 </tr>
 <tr>
   <td>set(<b>index</b>, <b>value</b>)</td>
-  <td>O(1) if front or end of list, O(N) avg</td>
+  <td>O(1) front/end, O(N) avg</td>
   <td>Changes the value at the specified index to the specified value.</td>
 </tr>
 <tr>
   <td>get(<b>index</b>)</td>
-  <td>O(1) if front or end of list, O(N) avg</td>
+  <td>O(1) front/end, O(N) avg</td>
   <td>Returns the value at the specified index.</td>
 </tr>
 <tr>
   <td>clear()</td>
   <td>O(N)</td>
-  <td>Removes all elements from the list.</td>
+  <td>Removes all elements from this list.</td>
 </tr>
 <tr>
   <td>toString()</td>
@@ -71,6 +71,39 @@ e.g. ```LinkedList<string> stringList;```
 <tr>
   <td>size()</td>
   <td>O(1)</td>
-  <td>Returns the number of elements in this list</td>
+  <td>Returns the number of elements in this list.</td>
+</tr>
+</table>
+<h3>Operators</h3>
+<table>
+<tr>
+  <td>list[index]</td>
+  <td>O(N)</td>
+  <td>Calls get() on the specified index.</td>
+</tr>
+<tr>
+  <td>list1 + list2</td>
+  <td>O(N)</td>
+  <td>Concatinates the two lists</td>
+</tr>
+<tr>
+  <td>list += value</td>
+  <td>O(1)</td>
+  <td>Calls add() on this list for the given value.</td>
+</tr>
+<tr>
+  <td>list1 == list2</td>
+  <td>O(N)</td>
+  <td>Returns <b>true</b> if <b>list1</b> and <b>list2</b> are identical.</td>
+</tr>
+<tr>
+  <td>list1 != list2</td>
+  <td>O(N)</td>
+  <td>Returns <b>true</b> if <b>list1</b> and <b>list2</b> are different.</b>
+</tr>
+<tr>
+  <td>ostream << list</td>
+  <td>O(N)</td>
+  <td>Outputs the contents of the list to the given output stream.</td>
 </tr>
 </table>
