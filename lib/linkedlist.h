@@ -26,17 +26,23 @@ class LinkedList {
 public:
     LinkedList();
     ~LinkedList();
+
+    //methods interacting with the object:
     void add(T value);
-    int size() const;
-    T get(int i);
-    void clear();
     void insert(int index, T value);
     void remove(int index);
-    bool isEmpty();
-    bool contains(T value);
+    void set(int index, T value);
+    T get(int i);
+    void clear();
     std::string toString();
     LinkedList<T> subList(int start, int length);
-    void set(int index, T value);
+
+    //methods returning the state of the object:
+    bool isEmpty() const;
+    bool contains(T value) const;
+    int size() const;
+
+    //operators:
     T operator [](int i);
     void operator +=(T value);
     void operator +=(LinkedList<T> list);
@@ -48,42 +54,7 @@ private:
     int mysize;
 };
 
-template <typename T> std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
-    for (int i = 0; i < list.size(); i++) out << list.get(i);
-    return out;
-}
 
-template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
-    if (list1.size() != list2.size()) return false;
-    for (int i = 0; i < list1.size(); i++) {
-        if (list1.get(i) != list2.get(i)) return false;
-    }
-    return true;
-}
-
-template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list2) {
-    if (list1 == list2) return false;
-    return true;
-}
-
-template <typename T> T LinkedList<T>::operator [](int i) {
-    return get(i);
-}
-
-template <typename T> void LinkedList<T>::operator +=(T value) {
-    add(value);
-}
-
-template <typename T> void LinkedList<T>::operator +=(LinkedList<T> list) {
-    for (int i = 0; i < list.size(); i++) add(list[i]);
-}
-
-template <typename T> LinkedList<T> operator +(LinkedList<T>& list1, LinkedList<T>& list2) {
-    LinkedList<T> _new;
-    for (int i = 0; i < list1.size(); i++) _new.add(list1[i]);
-    for (int i = 0; i < list2.size(); i++) _new.add(list2[i]);
-    return _new;
-}
 
 template <typename T> LinkedList<T>::LinkedList() {
     front = NULL;
@@ -158,13 +129,14 @@ template <typename T> T LinkedList<T>::get(int i) {
     return node->value;
 }
 
-template <typename T> int LinkedList<T>::size() const {
-    return mysize;
-}
-
-template <typename T> void LinkedList<T>::checkRange(int i, int max) const {
-    if (i >= max + 1 || i < 0) throw std::invalid_argument("index '" + std::to_string(i) + "' out of valid range (0 - "
-                                               + std::to_string(max) + ")");
+template <typename T> void LinkedList<T>::set(int index, T value) {
+    checkRange(index, mysize - 1);
+    if (index == mysize - 1) last->value = value;
+    else {
+        ListNode<T>* node = front;
+        for (int i = 0; i < index; i++) node = node->next;
+        node->value = value;
+    }
 }
 
 template <typename T> void LinkedList<T>::clear() {
@@ -172,17 +144,6 @@ template <typename T> void LinkedList<T>::clear() {
     mysize = 0;
     front = NULL;
     last = NULL;
-}
-
-template <typename T> bool LinkedList<T>::isEmpty() {
-    if (front == NULL) return true;
-    return false;
-}
-
-template <typename T> bool LinkedList<T>::contains(T value) {
-    for (int i = 0; i < mysize; i++) {
-        if (get(i) == value) return true;
-    } return false;
 }
 
 template <typename T> std::string LinkedList<T>::toString() {
@@ -195,6 +156,26 @@ template <typename T> std::string LinkedList<T>::toString() {
     return result;
 }
 
+template <typename T> int LinkedList<T>::size() const {
+    return mysize;
+}
+
+template <typename T> void LinkedList<T>::checkRange(int i, int max) const {
+    if (i >= max + 1 || i < 0) throw std::invalid_argument("index '" + std::to_string(i) + "' out of valid range (0 - "
+                                               + std::to_string(max) + ")");
+}
+
+template <typename T> bool LinkedList<T>::isEmpty() const {
+    if (front == NULL) return true;
+    return false;
+}
+
+template <typename T> bool LinkedList<T>::contains(T value) const {
+    for (int i = 0; i < mysize; i++) {
+        if (get(i) == value) return true;
+    } return false;
+}
+
 template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length) {
     if (length == 0) throw std::invalid_argument("length must be at least 1");
     LinkedList<T> result;
@@ -204,14 +185,41 @@ template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length
     return result;
 }
 
-template <typename T> void LinkedList<T>::set(int index, T value) {
-    checkRange(index, mysize - 1);
-    if (index == mysize - 1) last->value = value;
-    else {
-        ListNode<T>* node = front;
-        for (int i = 0; i < index; i++) node = node->next;
-        node->value = value;
+template <typename T> std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
+    for (int i = 0; i < list.size(); i++) out << list.get(i);
+    return out;
+}
+
+template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
+    if (list1.size() != list2.size()) return false;
+    for (int i = 0; i < list1.size(); i++) {
+        if (list1.get(i) != list2.get(i)) return false;
     }
+    return true;
+}
+
+template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list2) {
+    if (list1 == list2) return false;
+    return true;
+}
+
+template <typename T> T LinkedList<T>::operator [](int i) {
+    return get(i);
+}
+
+template <typename T> void LinkedList<T>::operator +=(T value) {
+    add(value);
+}
+
+template <typename T> void LinkedList<T>::operator +=(LinkedList<T> list) {
+    for (int i = 0; i < list.size(); i++) add(list[i]);
+}
+
+template <typename T> LinkedList<T> operator +(LinkedList<T>& list1, LinkedList<T>& list2) {
+    LinkedList<T> _new;
+    for (int i = 0; i < list1.size(); i++) _new.add(list1[i]);
+    for (int i = 0; i < list2.size(); i++) _new.add(list2[i]);
+    return _new;
 }
 
 #endif // LINKEDLIST_H
