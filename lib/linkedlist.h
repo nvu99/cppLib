@@ -36,10 +36,10 @@ public:
     void clear();
     std::string toString();
     LinkedList<T> subList(int start, int length);
+    bool contains(T value) const;
 
     //methods returning the state of the object:
     bool isEmpty() const;
-    bool contains(T value) const;
     int size() const;
 
     //operators:
@@ -148,11 +148,14 @@ template <typename T> void LinkedList<T>::clear() {
 
 template <typename T> std::string LinkedList<T>::toString() {
     std::string result;
+    result += "{";
     ListNode<T>* node = front;
     for (int i = 0; i < mysize; i++) {
         result += std::to_string(node->value);
         node = node->next;
+        if (i < mysize - 1) result += ",";
     }
+    result += "}";
     return result;
 }
 
@@ -171,31 +174,33 @@ template <typename T> bool LinkedList<T>::isEmpty() const {
 }
 
 template <typename T> bool LinkedList<T>::contains(T value) const {
+    ListNode<T>* node = front;
     for (int i = 0; i < mysize; i++) {
-        if (get(i) == value) return true;
+        if (node->value == value) return true;
+        node = node->next;
     } return false;
 }
 
 template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length) {
-    if (length == 0) throw std::invalid_argument("length must be at least 1");
     LinkedList<T> result;
-    for (int i = start; i < start + length; i++) {
-        result.add(get(i));
+    ListNode<T>* node = front;
+    for (int i = 0; i < start; i++) node = node->next;
+    for (int i = 0; i < length; i++) {
+        result.add(node->value);
+        node = node->next;
     }
     return result;
 }
 
 template <typename T> std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
-    for (int i = 0; i < list.size(); i++) out << list.get(i);
+    out << list.toString();
     return out;
 }
 
 template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
     if (list1.size() != list2.size()) return false;
-    for (int i = 0; i < list1.size(); i++) {
-        if (list1.get(i) != list2.get(i)) return false;
-    }
-    return true;
+    if (list1.toString() == list2.toString()) return true;
+    else return false;
 }
 
 template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list2) {
