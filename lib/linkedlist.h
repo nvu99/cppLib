@@ -33,13 +33,18 @@ public:
     void insert(int index, T value);
     void remove(int index);
     bool isEmpty();
+    bool contains(T value);
     std::string toString();
     LinkedList<T> subList(int start, int length);
     void set(int index, T value);
+    T operator [](int i);
+    void operator +=(T value);
+    void operator +=(LinkedList<T> list);
 private:
     void freeMemoryHelper(ListNode<T>*& node);
     void checkRange (int i, int max) const;
     ListNode<T>* front;
+    ListNode<T>* last;
     int mysize;
 };
 
@@ -48,8 +53,41 @@ template <typename T> std::ostream& operator <<(std::ostream& out, LinkedList<T>
     return out;
 }
 
+template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
+    if (list1.size() != list2.size()) return false;
+    for (int i = 0; i < list1.size(); i++) {
+        if (list1.get(i) != list2.get(i)) return false;
+    }
+    return true;
+}
+
+template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list2) {
+    if (list1 == list2) return false;
+    return true;
+}
+
+template <typename T> T LinkedList<T>::operator [](int i) {
+    return get(i);
+}
+
+template <typename T> void LinkedList<T>::operator +=(T value) {
+    add(value);
+}
+
+template <typename T> void LinkedList<T>::operator +=(LinkedList<T> list) {
+    for (int i = 0; i < list.size(); i++) add(list[i]);
+}
+
+template <typename T> LinkedList<T> operator +(LinkedList<T>& list1, LinkedList<T>& list2) {
+    LinkedList<T> _new;
+    for (int i = 0; i < list1.size(); i++) _new.add(list1[i]);
+    for (int i = 0; i < list2.size(); i++) _new.add(list2[i]);
+    return _new;
+}
+
 template <typename T> LinkedList<T>::LinkedList() {
     front = NULL;
+    last = NULL;
     mysize = 0;
 }
 
@@ -65,11 +103,11 @@ template <typename T> void LinkedList<T>::freeMemoryHelper(ListNode<T>*& node) {
 template <typename T> void LinkedList<T>::add(T value) {
     if (mysize == 0) {
         front = new ListNode<T>(value);
+        last = front;
     }
     else {
-        ListNode<T>* curr = front;
-        for (int i = 0; i < mysize - 1; i++) curr = curr->next;
-        curr->next = new ListNode<T>(value);
+        last->next = new ListNode<T>(value);
+        last = last->next;
     }
     mysize++;
 }
@@ -85,6 +123,7 @@ template <typename T> void LinkedList<T>::insert(int index, T value) {
         for (int i = 0; i < index - 1; i++) curr = curr->next;
         newNode->next = curr->next;
         curr->next = newNode;
+        if (newNode->next == NULL || index == mysize) last = newNode;
     }
     mysize++;
 }
@@ -101,6 +140,10 @@ template <typename T> void LinkedList<T>::remove(int index) {
         ListNode<T>* trash = curr->next;
         curr->next = curr->next->next;
         delete trash;
+        if (index >= mysize - 1) {
+            last = front;
+            for (int i = 0; i < mysize - 2; i++) last = last->next;
+        }
     }
     mysize--;
 }
@@ -125,11 +168,18 @@ template <typename T> void LinkedList<T>::clear() {
     freeMemoryHelper(front);
     mysize = 0;
     front = NULL;
+    last = NULL;
 }
 
 template <typename T> bool LinkedList<T>::isEmpty() {
     if (front == NULL) return true;
     return false;
+}
+
+template <typename T> bool LinkedList<T>::contains(T value) {
+    for (int i = 0; i < mysize; i++) {
+        if (get(i) == value) return true;
+    } return false;
 }
 
 template <typename T> std::string LinkedList<T>::toString() {
