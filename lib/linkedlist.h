@@ -118,12 +118,14 @@ template <typename T> void LinkedList<T>::insert(int index, T value) {
     if (index == 0) {
         newNode->next = front;
         front = newNode;
+    } else if (index == mysize) {
+        add(value);
+        return;
     } else {
         ListNode<T>* curr = front;
         for (int i = 0; i < index - 1; i++) curr = curr->next;
         newNode->next = curr->next;
         curr->next = newNode;
-        if (newNode->next == NULL || index == mysize) last = newNode;
     }
     mysize++;
 }
@@ -150,6 +152,7 @@ template <typename T> void LinkedList<T>::remove(int index) {
 
 template <typename T> T LinkedList<T>::get(int i) {
     checkRange(i, mysize - 1);
+    if (i == mysize - 1) return last->value;
     ListNode<T>* node = front;
     for (int a = 0; a < i; a++) node = node->next;
     return node->value;
@@ -203,9 +206,12 @@ template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length
 
 template <typename T> void LinkedList<T>::set(int index, T value) {
     checkRange(index, mysize - 1);
-    ListNode<T>* node = front;
-    for (int i = 0; i < index; i++) node = node->next;
-    node->value = value;
+    if (index == mysize - 1) last->value = value;
+    else {
+        ListNode<T>* node = front;
+        for (int i = 0; i < index; i++) node = node->next;
+        node->value = value;
+    }
 }
 
 #endif // LINKEDLIST_H
