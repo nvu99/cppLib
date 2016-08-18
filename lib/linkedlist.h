@@ -43,16 +43,15 @@ public:
     int size() const;
 
     //operators:
-    T operator [](int i);
+    //T operator [](int i);
+    T& operator [](int i);
     void operator +=(T value);
-
     friend LinkedList<T> operator +(LinkedList<T>& input1, LinkedList<T>& input2) {
         LinkedList<T> result;
         result.plusHelper(result, input1);
         result.plusHelper(result, input2);
         return result;
     }
-
     friend std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
         ListNode<T>* node = list.front;
         for (int i = 0; i < list.mysize; i++) {
@@ -77,8 +76,7 @@ private:
     int mysize;
 };
 
-
-
+//member functions:
 template <typename T> LinkedList<T>::LinkedList() {
     front = NULL;
     last = NULL;
@@ -145,11 +143,7 @@ template <typename T> void LinkedList<T>::remove(int index) {
 }
 
 template <typename T> T LinkedList<T>::get(int i) {
-    checkRange(i, mysize - 1);
-    if (i == mysize - 1) return last->value;
-    ListNode<T>* node = front;
-    for (int a = 0; a < i; a++) node = node->next;
-    return node->value;
+    return LinkedList<T>::operator [](i);
 }
 
 template <typename T> void LinkedList<T>::set(int index, T value) {
@@ -211,8 +205,7 @@ template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length
     for (int i = 0; i < length; i++) {
         result.add(node->value);
         node = node->next;
-    }
-    return result;
+    } return result;
 }
 
 template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
@@ -226,8 +219,12 @@ template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list
     return true;
 }
 
-template <typename T> T LinkedList<T>::operator [](int i) {
-    return get(i);
+template <typename T> T& LinkedList<T>::operator [](int i) {
+    checkRange(i, mysize - 1);
+    if (i == mysize - 1) return last->value;
+    ListNode<T>* node = front;
+    for (int a = 0; a < i; a++) node = node->next;
+    return node->value;
 }
 
 template <typename T> void LinkedList<T>::operator +=(T value) {
