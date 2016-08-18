@@ -20,6 +20,8 @@
 
 #include "listnode.h"
 #include "stdexcept"
+#include <string>
+#include <sstream>
 
 template <class T>
 class LinkedList {
@@ -168,7 +170,9 @@ template <typename T> std::string LinkedList<T>::toString() {
     result += "{";
     ListNode<T>* node = front;
     for (int i = 0; i < mysize; i++) {
-        result += std::to_string(node->value);
+        std::stringstream ss;
+        ss << node->value;
+        result += ss.str();
         node = node->next;
         if (i < mysize - 1) result += ",";
     }

@@ -106,4 +106,9 @@ e.g. ```LinkedList<string> stringList;```
   <td>O(N)</td>
   <td>Outputs the contents of the list to the given output stream.</td>
 </tr>
+<tr>
+  <td>istream >> list</td>
+  <td>O(1)</td>
+  <td>Reads the value from the input stream into the list.</td>
+</tr>
 </table>
