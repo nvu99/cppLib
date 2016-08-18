@@ -45,7 +45,6 @@ public:
     int size() const;
 
     //operators:
-    //T operator [](int i);
     T& operator [](int i);
     void operator +=(T value);
     friend LinkedList<T> operator +(LinkedList<T>& input1, LinkedList<T>& input2) {
