@@ -90,5 +90,5 @@ Usage: ```stack.push(999);```
 Returns the number of elements in this stack.<br>
 Usage: ```int n = stack.size();```
 <h4>string toString();</h4>
-Returns a printable representation of the elements in this stack.
+Returns a printable representation of the elements in this stack.<br>
 Usage: ```string s = stack.toString();``` or ```cout << stack.toString();```
