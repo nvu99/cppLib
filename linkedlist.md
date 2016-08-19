@@ -23,7 +23,7 @@
 <tr>
   <td>insert(<b>index</b>, <b>value</b>)</td>
   <td>O(1) front/end, O(N) avg</td>
-  <td>Inserts the element before the specified index.</td>
+  <td>Inserts an element before the specified index.</td>
 </tr>
 <tr>
   <td>remove(<b>index</b>)</td>
@@ -116,4 +116,35 @@ e.g. ```LinkedList<string> stringList;```
 
 <h3>Method detail</h3>
 <h4>void add(ValueType value);</h4>
+Adds a new value to the end of the list<br>
 Usage: ```list.add(value);```
+<h4>void insert(int index, ValueType value);</h4>
+Inserts an element before the specified index.<br>
+Usage: ```list.insert(3, "dog");```
+<h4>void remove(int index);</h4>
+Removes the element at the specified index.<br>
+Usage: ```list.remove(2);```
+<h4>void set(int index, ValueType value)</h4>
+Changes the value at the specified index to the specified value.<br>
+Usage: ```list.set(2, "cat");```
+<h4>ValueType get(int index)</h4>
+Returns the value at the specified index.<br>
+Usage: ```list.get(0);```
+<h4>void clear();</h4>
+Removes all elements from this list.<br>
+Usage: ```list.clear();```
+<h4>string toString();</h4>
+Returns a printable string representation of the list.
+Usage: ```list.toString();```
+<h4>LinkedList<ValueType> subList(int start, int length);</h4>
+Returns a new list containing the elements of the given sub-range.<br>
+Usage: ```list.subList(2, 3);```
+<h4>bool contains(value);</h4>
+Returns <b>true</b> if this list contains the given value.<br>
+Usage: ```list.contains("dog");```
+<h4>bool isEmpty();</h4>
+Returns <b>true</b> if this list contains no elements.<br>
+Usage: ```list.isEmpty();```
+<h4>int size();</h4>
+Returns the number of elements in this list<br>
+Usage: ```list.size();```
