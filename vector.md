@@ -2,7 +2,7 @@
 
 ```#include "vector.h"```<br>
 ```class Vector<ValueType>```<br>
-<p>This class is an enhanced version of the array. It supports insert/remove operations. Similar to the STL <b>vector</b> type.</p>
+<p>This class is an enhanced version of the array. Supports insert/remove operations. Similar to the STL <b>vector</b> type.</p>
 
 <h3>Constructor</h3>
 <table>
