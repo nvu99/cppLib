@@ -65,7 +65,7 @@ template<typename T> void Stack<T>::clear() {
     mysize = 0;
 }
 
-template<typename T> void clearHelper(ListNode<T>* node) {
+template<typename T> void clearHelper(ListNode<T>*& node) {
     if (node != NULL) {
         clearHelper(node->next);
         delete node;
