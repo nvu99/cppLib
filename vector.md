@@ -7,7 +7,7 @@
 <h3>Constructor</h3>
 <table>
 <tr>
-  <td>vector()</td>
+  <td>Vector()</td>
   <td>O(1)</td>
   <td>Initializes a new empty vector. </td>
 </tr>
@@ -111,8 +111,8 @@
 </table>
 
 <h3>Constructor detail</h3>
-Call ```vector<ValueType> vector;```<br>
-e.g. ```vector<string> vector;```
+Call ```Vector<ValueType> vector;```<br>
+e.g. ```Vector<string> vector;```
 
 <h3>Method detail</h3>
 <h4>void add(ValueType value);</h4>
@@ -129,13 +129,13 @@ Changes the value at the specified index to the specified value.<br>
 Usage: ```vector.set(2, "cat");```
 <h4>ValueType get(int index);</h4>
 Returns the value at the specified index.<br>
-Usage: ```vector.get(0);```
+Usage: ```ValueType val = vector.get(0);```
 <h4>void clear();</h4>
 Removes all elements from this vector.<br>
 Usage: ```vector.clear();```
 <h4>string toString();</h4>
 Returns a printable string representation of the vector.<br>
-Usage: ```vector.toString();```
+Usage: ```string s = vector.toString();``` or ```cout << vector.toString();```
 <h4>Vector<ValueType> subList(int start, int length);</h4>
 Returns a new vector containing the elements of the given sub-range.<br>
 Usage: ```vector.subList(2, 3);```
@@ -147,4 +147,4 @@ Returns <b>true</b> if this vector contains no elements.<br>
 Usage: ```vector.isEmpty();```
 <h4>int size();</h4>
 Returns the number of elements in this vector.<br>
-Usage: ```vector.size();```
+Usage: ```int n = vector.size();```
