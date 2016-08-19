@@ -116,5 +116,5 @@ e.g. ```LinkedList<string> stringList;```
 
 <h3>Method detail</h3>
 <h4>void add(ValueType value);</h4>
-Usage:<br>
+Usage:
 ```list.add(value);```
