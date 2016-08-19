@@ -71,6 +71,7 @@ template<typename T> void Queue<T>::clearHelper(ListNode<T>*& node) {
 }
 
 template<typename T> T Queue<T>::dequeue() {
+    if (frontNode == NULL || mysize == 0) throw std::invalid_argument("Cannot dequeue from empty queue.");
     T value = frontNode->value;
     ListNode<T>* trash = frontNode;
     frontNode = frontNode->next;
@@ -91,6 +92,7 @@ template<typename T> void Queue<T>::enqueue(T value) {
 }
 
 template<typename T> T& Queue<T>::front() {
+    if (frontNode == NULL || mysize == 0) throw std::invalid_argument("Cannot return from empty queue.");
     return frontNode->value;
 }
 
@@ -100,6 +102,7 @@ template<typename T> bool Queue<T>::isEmpty() const {
 }
 
 template<typename T> T Queue<T>::peek() const {
+    if (frontNode == NULL || mysize == 0) throw std::invalid_argument("Cannot peek empty queue.");
     return frontNode->value;
 }
 
