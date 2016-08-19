@@ -124,10 +124,10 @@ Usage: ```list.insert(3, "dog");```
 <h4>void remove(int index);</h4>
 Removes the element at the specified index. To be improved for Big-Oh runtime.<br>
 Usage: ```list.remove(2);```
-<h4>void set(int index, ValueType value)</h4>
+<h4>void set(int index, ValueType value);</h4>
 Changes the value at the specified index to the specified value. O(1) front/end of list.<br>
 Usage: ```list.set(2, "cat");```
-<h4>ValueType get(int index)</h4>
+<h4>ValueType get(int index);</h4>
 Returns the value at the specified index. O(1) front/end of list.<br>
 Usage: ```list.get(0);```
 <h4>void clear();</h4>

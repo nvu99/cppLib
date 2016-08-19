@@ -124,10 +124,10 @@ Usage: ```vector.insert(3, "dog");```
 <h4>void remove(int index);</h4>
 Removes the element at the specified index.<br>
 Usage: ```vector.remove(2);```
-<h4>void set(int index, ValueType value)</h4>
+<h4>void set(int index, ValueType value);</h4>
 Changes the value at the specified index to the specified value.<br>
 Usage: ```vector.set(2, "cat");```
-<h4>ValueType get(int index)</h4>
+<h4>ValueType get(int index);</h4>
 Returns the value at the specified index.<br>
 Usage: ```vector.get(0);```
 <h4>void clear();</h4>
