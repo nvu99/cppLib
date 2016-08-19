@@ -99,12 +99,12 @@
   <td>Returns <b>true</b> if <b>list1</b> and <b>list2</b> are different.</b>
 </tr>
 <tr>
-  <td>ostream << list</td>
+  <td>ostream& << list</td>
   <td>O(N)</td>
   <td>Outputs the contents of the list to the given output stream.</td>
 </tr>
 <tr>
-  <td>istream >> list</td>
+  <td>istream& >> list</td>
   <td>O(1)</td>
   <td>Reads the value from the input stream into the list.</td>
 </tr>

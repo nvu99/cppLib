@@ -64,6 +64,16 @@
 	<td>O(N)</td>
 	<td>Returns <b>true</b> if stack1 and stack2 are different.</td>
 </tr>
+<tr>
+	<td>ostream& << stack</td>
+	<td>O(N)</td>
+	<td>Outputs the contents of this stack to the given output stream.</td>
+</tr>
+<tr>
+	<td>istream& >> stack</td>
+	<td>O(1)</td>
+	<td>Pushes the element from the input stream onto the stack.</td>
+</tr>
 </table>
 
 <h3>Constructor detail</h3>

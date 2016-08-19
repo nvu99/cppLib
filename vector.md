@@ -99,12 +99,12 @@
   <td>Returns <b>true</b> if <b>vector1</b> and <b>vector2</b> are different.</b>
 </tr>
 <tr>
-  <td>ostream << vector</td>
+  <td>ostream& << vector</td>
   <td>O(N)</td>
-  <td>Outputs the contents of the vector to the given output stream.</td>
+  <td>Outputs the contents of this vector to the given output stream.</td>
 </tr>
 <tr>
-  <td>istream >> vector</td>
+  <td>istream& >> vector</td>
   <td>O(1)</td>
   <td>Reads the value from the input stream into the vector.</td>
 </tr>
