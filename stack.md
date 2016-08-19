@@ -82,7 +82,7 @@ e.g. ```Stack<int> stack;```
 
 <h3>Method detail</h3>
 <h4>void clear();</h4>
-Removes all elements from this stack<br>
+Removes all elements from this stack.<br>
 Usage: ```stack.clear();```
 <h4>bool isEmpty();</h4>
 Returns <b>true</b> if this stack contains no elements.<br>
