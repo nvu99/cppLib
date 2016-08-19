@@ -52,16 +52,11 @@ template<typename T> void Vector<T>::insert(int index, T value) {
 }
 
 template<typename T> std::string Vector<T>::toString() const {
-    std::string result;
-    result += "{";
+    std::stringstream ss;
     for (int i = 0; i < mysize; i++) {
-        std::stringstream ss;
         ss << elements[i];
-        result += ss.str();
-        if (i < mysize - 1) result += ",";
-    }
-    result += "}";
-    return result;
+        if (i < mysize - 1) ss << ",";
+    } return "{" + ss.str() + "}";
 }
 
 template<typename T> void Vector<T>::remove(int index) {
@@ -110,8 +105,7 @@ template<typename T> bool operator ==(Vector<T>& v1, Vector<T>& v2) {
     if (v1.size() != v2.size()) return false;
     for (int i = 0; i < v1.size(); i++) {
         if (v1[i] != v2[i]) return false;
-    }
-    return true;
+    } return true;
 }
 
 template<typename T> bool operator !=(Vector<T>& v1, Vector<T>& v2) {

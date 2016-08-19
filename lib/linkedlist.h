@@ -165,18 +165,13 @@ template <typename T> void LinkedList<T>::clear() {
 }
 
 template <typename T> std::string LinkedList<T>::toString() {
-    std::string result;
-    result += "{";
     ListNode<T>* node = front;
+    std::stringstream ss;
     for (int i = 0; i < mysize; i++) {
-        std::stringstream ss;
         ss << node->value;
-        result += ss.str();
         node = node->next;
-        if (i < mysize - 1) result += ",";
-    }
-    result += "}";
-    return result;
+        if (i < mysize - 1) ss << ",";
+    } return "{" + ss.str() + "}";
 }
 
 template <typename T> int LinkedList<T>::size() const {
