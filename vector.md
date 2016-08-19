@@ -110,6 +110,41 @@
 </tr>
 </table>
 
-<h4>Constructor detail</h4>
+<h3>Constructor detail</h3>
 Call ```vector<ValueType> vector;```<br>
 e.g. ```vector<string> vector;```
+
+<h3>Method detail</h3>
+<h4>void add(ValueType value);</h4>
+Adds a new value to the end of the vector<br>
+Usage: ```vector.add(value);```
+<h4>void insert(int index, ValueType value);</h4>
+Inserts an element before the specified index.<br>
+Usage: ```vector.insert(3, "dog");```
+<h4>void remove(int index);</h4>
+Removes the element at the specified index.<br>
+Usage: ```vector.remove(2);```
+<h4>void set(int index, ValueType value)</h4>
+Changes the value at the specified index to the specified value.<br>
+Usage: ```vector.set(2, "cat");```
+<h4>ValueType get(int index)</h4>
+Returns the value at the specified index.<br>
+Usage: ```vector.get(0);```
+<h4>void clear();</h4>
+Removes all elements from this vector.<br>
+Usage: ```vector.clear();```
+<h4>string toString();</h4>
+Returns a printable string representation of the vector.
+Usage: ```vector.toString();```
+<h4>Vector<ValueType> subList(int start, int length);</h4>
+Returns a new vector containing the elements of the given sub-range.<br>
+Usage: ```vector.subList(2, 3);```
+<h4>bool contains(value);</h4>
+Returns <b>true</b> if this vector contains the given value.<br>
+Usage: ```vector.contains("dog");```
+<h4>bool isEmpty();</h4>
+Returns <b>true</b> if this vector contains no elements.<br>
+Usage: ```vector.isEmpty();```
+<h4>int size();</h4>
+Returns the number of elements in this vector<br>
+Usage: ```vector.size();```
