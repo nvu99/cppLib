@@ -134,7 +134,7 @@ Usage: ```list.get(0);```
 Removes all elements from this list.<br>
 Usage: ```list.clear();```
 <h4>string toString();</h4>
-Returns a printable string representation of the list.
+Returns a printable string representation of the list.<br>
 Usage: ```list.toString();```
 <h4>LinkedList<ValueType> subList(int start, int length);</h4>
 Returns a new list containing the elements of the given sub-range.<br>
@@ -146,5 +146,5 @@ Usage: ```list.contains("dog");```
 Returns <b>true</b> if this list contains no elements.<br>
 Usage: ```list.isEmpty();```
 <h4>int size();</h4>
-Returns the number of elements in this list<br>
+Returns the number of elements in this list.<br>
 Usage: ```list.size();```

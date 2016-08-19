@@ -116,7 +116,7 @@ e.g. ```vector<string> vector;```
 
 <h3>Method detail</h3>
 <h4>void add(ValueType value);</h4>
-Adds a new value to the end of the vector<br>
+Adds a new value to the end of the vector.<br>
 Usage: ```vector.add(value);```
 <h4>void insert(int index, ValueType value);</h4>
 Inserts an element before the specified index.<br>
@@ -134,7 +134,7 @@ Usage: ```vector.get(0);```
 Removes all elements from this vector.<br>
 Usage: ```vector.clear();```
 <h4>string toString();</h4>
-Returns a printable string representation of the vector.
+Returns a printable string representation of the vector.<br>
 Usage: ```vector.toString();```
 <h4>Vector<ValueType> subList(int start, int length);</h4>
 Returns a new vector containing the elements of the given sub-range.<br>
@@ -146,5 +146,5 @@ Usage: ```vector.contains("dog");```
 Returns <b>true</b> if this vector contains no elements.<br>
 Usage: ```vector.isEmpty();```
 <h4>int size();</h4>
-Returns the number of elements in this vector<br>
+Returns the number of elements in this vector.<br>
 Usage: ```vector.size();```
