@@ -115,6 +115,6 @@ Call ```LinkedList<ValueType> list;```<br>
 e.g. ```LinkedList<string> stringList;```
 
 <h3>Method detail</h3>
-<h4>```void add(ValueType value);```</h4>
+<h4>void add(ValueType value);</h4>
 Usage:<br>
 ```list.add(value);```
