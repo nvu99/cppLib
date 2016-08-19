@@ -1,15 +1,18 @@
 <h2>LinkedList</h2>
+
+```#include "linkedlist.h"```<br>
+```class LinkedList<ValueType>```<br>
+<p>This class acts similarly to an array. It supports insert/remove operations. Very efficient for performing any operations closer to the front of the list. Similar to the STL <b>list</b> type.</p>
+
 <h3>Constructor</h3>
 <table>
 <tr>
   <td>LinkedList()</td>
   <td>O(1)</td>
-  <td>Initializes an new empty LinkedList. </td>
+  <td>Initializes a new empty LinkedList. </td>
 </tr>
 </table>
-<h4>Constructor detail</h4>
-Call ```LinkedList<ValueType> list;```<br>
-e.g. ```LinkedList<string> stringList;```
+
 <h3>Methods</h3>
 <table>
 <tr>
@@ -25,7 +28,7 @@ e.g. ```LinkedList<string> stringList;```
 <tr>
   <td>remove(<b>index</b>)</td>
   <td>O(N)</td>
-  <td>Removes the element at the specified index. To be improved.</td>
+  <td>Removes the element at the specified index.</td>
 </tr>
 <tr>
   <td>set(<b>index</b>, <b>value</b>)</td>
@@ -73,12 +76,12 @@ e.g. ```LinkedList<string> stringList;```
 <tr>
   <td>list[index]</td>
   <td>O(N)</td>
-  <td>Calls get() on the specified index.</td>
+  <td>Selects the element at the specified index.</td>
 </tr>
 <tr>
   <td>list1 + list2</td>
   <td>O(N)</td>
-  <td>Concatinates the two lists</td>
+  <td>Concatinates the two lists.</td>
 </tr>
 <tr>
   <td>list += value</td>
@@ -106,3 +109,12 @@ e.g. ```LinkedList<string> stringList;```
   <td>Reads the value from the input stream into the list.</td>
 </tr>
 </table>
+
+<h3>Constructor detail</h3>
+Call ```LinkedList<ValueType> list;```<br>
+e.g. ```LinkedList<string> stringList;```
+
+<h3>Method detail</h3>
+<h4>```void add(ValueType value);```</h4>
+Usage:<br>
+```list.add(value);```
