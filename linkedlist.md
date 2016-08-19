@@ -2,7 +2,7 @@
 
 ```#include "linkedlist.h"```<br>
 ```class LinkedList<ValueType>```<br>
-<p>This class acts similarly to an array. Supports insert/remove operations. Very efficient for performing any operations closer to the front of the list. Similar to the STL <b>list</b> type.</p>
+<p>This class acts similarly to an array. Supports insert/remove operations. Very efficient when performing operations closer to the front of the list. Similar to the STL <b>list</b> type.</p>
 
 <h3>Constructor</h3>
 <table>
