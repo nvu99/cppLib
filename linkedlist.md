@@ -22,7 +22,7 @@
 </tr>
 <tr>
   <td>insert(<b>index</b>, <b>value</b>)</td>
-  <td>O(1) front/end, O(N) avg</td>
+  <td>O(N)</td>
   <td>Inserts an element before the specified index.</td>
 </tr>
 <tr>
@@ -32,12 +32,12 @@
 </tr>
 <tr>
   <td>set(<b>index</b>, <b>value</b>)</td>
-  <td>O(1) front/end, O(N) avg</td>
+  <td>O(N)</td>
   <td>Changes the value at the specified index to the specified value.</td>
 </tr>
 <tr>
   <td>get(<b>index</b>)</td>
-  <td>O(1) front/end, O(N) avg</td>
+  <td>O(N)</td>
   <td>Returns the value at the specified index.</td>
 </tr>
 <tr>
@@ -116,19 +116,19 @@ e.g. ```LinkedList<string> stringList;```
 
 <h3>Method detail</h3>
 <h4>void add(ValueType value);</h4>
-Adds a new value to the end of the list<br>
+Adds a new value to the end of the list.<br>
 Usage: ```list.add(value);```
 <h4>void insert(int index, ValueType value);</h4>
-Inserts an element before the specified index.<br>
+Inserts an element before the specified index. O(1) front/end of list.<br>
 Usage: ```list.insert(3, "dog");```
 <h4>void remove(int index);</h4>
-Removes the element at the specified index.<br>
+Removes the element at the specified index. To be improved for Big-Oh runtime.<br>
 Usage: ```list.remove(2);```
 <h4>void set(int index, ValueType value)</h4>
-Changes the value at the specified index to the specified value.<br>
+Changes the value at the specified index to the specified value. O(1) front/end of list.<br>
 Usage: ```list.set(2, "cat");```
 <h4>ValueType get(int index)</h4>
-Returns the value at the specified index.<br>
+Returns the value at the specified index. O(1) front/end of list.<br>
 Usage: ```list.get(0);```
 <h4>void clear();</h4>
 Removes all elements from this list.<br>
