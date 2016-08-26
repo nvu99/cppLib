@@ -24,10 +24,10 @@ template <class T> class Vector {
 public:
     Vector();
     ~Vector();
-    void add(T value);
+    void add(T& value);
     void clear();
     T get(int index) const;
-    void insert(int index, T value);
+    void insert(int index, T& value);
     bool isEmpty() const;
     void remove(int index);
     void set(int index, T value);
@@ -45,7 +45,7 @@ public:
         return result;
     }
     friend std::ostream& operator <<(std::ostream& out, Vector<T>& v) {
-        for (int i = 0; i < v.size(); v++) out << v[i];
+        out << v.toString();
         return out;
     }
     friend std::istream& operator >>(std::istream& in, Vector<T>& v) {

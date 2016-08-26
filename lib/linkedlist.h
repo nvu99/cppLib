@@ -28,10 +28,10 @@ public:
     ~LinkedList();
 
     //methods interacting with the object:
-    void add(T value);
-    void insert(int index, T value);
+    void add(T& value);
+    void insert(int index, T& value);
     void remove(int index);
-    void set(int index, T value);
+    void set(int index, T& value);
     T get(int i);
     void clear();
     std::string toString();
@@ -52,11 +52,7 @@ public:
         return result;
     }
     friend std::ostream& operator <<(std::ostream& out, LinkedList<T>& list) {
-        ListNode<T>* node = list.front;
-        for (int i = 0; i < list.mysize; i++) {
-            out << node->value;
-            node = node->next;
-        }
+        out << list.toString();
         return out;
     }
     friend std::istream& operator >>(std::istream& input, LinkedList<T>& list) {
@@ -64,6 +60,16 @@ public:
         input >> value;
         list.add(value);
         return input;
+    }
+    friend bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
+        if (list1.size() != list2.size()) return false;
+        ListNode<T>* node1 = list1.front;
+        ListNode<T>* node2 = list2.front;
+        for (int i = 0; i < list1.size(); i++) {
+            if (node1->value != node2->value) return false;
+            node1 = node1->next;
+            node2 = node2->next;
+        } return true;
     }
 
 private:

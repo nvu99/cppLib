@@ -28,7 +28,7 @@ template<typename T> Vector<T>::Vector()
 }
 
 template<typename T> Vector<T>::~Vector() {
-    delete[] elements;
+    clear();
 }
 
 template<typename T> T Vector<T>::get(int index) const {
@@ -36,7 +36,7 @@ template<typename T> T Vector<T>::get(int index) const {
     return elements[index];
 }
 
-template<typename T> void Vector<T>::add(T value) {
+template<typename T> void Vector<T>::add(T& value) {
     elements[mysize] = value;
     mysize++;
     checkResize();
@@ -58,7 +58,7 @@ template<typename T> int Vector<T>::size() const {
     return mysize;
 }
 
-template<typename T> void Vector<T>::insert(int index, T value) {
+template<typename T> void Vector<T>::insert(int index, T& value) {
     checkRange(index, 0, mysize - 1);
     checkResize();
     for (int i = mysize; i > index; i--) {
@@ -104,7 +104,8 @@ template<typename T> void Vector<T>::checkRange(int index, int min, int max) con
 template<typename T> void Vector<T>::clear() {
     delete[] elements;
     mysize = 0;
-    Vector<T>::Vector();
+    capacity = 50;
+    elements = new T[capacity]();
 }
 
 template<typename T> T& Vector<T>::operator [](int index) {

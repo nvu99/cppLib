@@ -29,12 +29,13 @@ public:
     T& back();
     void clear();
     T dequeue();
-    void enqueue(T value);
+    void enqueue(T& value);
     T& front();
     bool isEmpty() const;
-    T peek() const;
+    virtual T peek() const;
     int size() const;
     std::string toString() const;
+
 private:
     void clearHelper(ListNode<T>*& node);
     ListNode<T>* frontNode;
@@ -80,7 +81,7 @@ template<typename T> T Queue<T>::dequeue() {
     return value;
 }
 
-template<typename T> void Queue<T>::enqueue(T value) {
+template<typename T> void Queue<T>::enqueue(T& value) {
     ListNode<T>* newNode = new ListNode<T>(value);
     if (mysize == 0) {
         frontNode = newNode;
@@ -133,7 +134,7 @@ template<typename T> bool operator !=(Queue<T>& q1, Queue<T>& q2) {
 }
 
 template<typename T>std::ostream& operator <<(std::ostream& out, Queue<T> q) {
-    for (int i = 0; i < q.size(); i++) out << q.dequeue();
+    out << q.toString();
     return out;
 }
 

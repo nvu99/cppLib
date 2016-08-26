@@ -22,7 +22,7 @@
 
 template<class T> class ListNode {
 public:
-    ListNode(T value);
+    ListNode(T& value);
     T value;
     ListNode<T>* next;
 };
@@ -34,7 +34,7 @@ std::ostream& operator <<(std::ostream& out, ListNode<T>* node) {
 }
 
 template<typename T>
-ListNode<T>::ListNode(T value) {
+ListNode<T>::ListNode(T& value) {
     this->value = value;
 }
 

@@ -31,7 +31,7 @@ public:
     bool isEmpty() const;
     T peek() const;
     T pop();
-    void push(T value);
+    void push(T& value);
     int size() const;
     std::string toString();
 
@@ -47,6 +47,7 @@ public:
     }
 
 private:
+    void clearHelper(ListNode<T>*& node);
     ListNode<T>* root;
     int mysize;
 };
@@ -65,7 +66,7 @@ template<typename T> void Stack<T>::clear() {
     mysize = 0;
 }
 
-template<typename T> void clearHelper(ListNode<T>*& node) {
+template<typename T> void Stack<T>::clearHelper(ListNode<T>*& node) {
     if (node != NULL) {
         clearHelper(node->next);
         delete node;
@@ -92,7 +93,7 @@ template<typename T> T Stack<T>::pop() {
     return value;
 }
 
-template<typename T> void Stack<T>::push(T value) {
+template<typename T> void Stack<T>::push(T& value) {
     ListNode<T>* newNode = new ListNode<T>(value);
     if (mysize == 0) root = newNode;
     else {
@@ -122,9 +123,8 @@ template<typename T> bool operator !=(Stack<T>& stack1, Stack<T>& stack2) {
 }
 
 template<typename T> std::ostream& operator <<(std::ostream& out, Stack<T> s) {
-    for (int i = 0; i < s.size(); i++) {
-        out << s.pop();
-    } return out;
+    out << s.toString();
+    return out;
 }
 
 template<typename T> std::istream& operator >>(std::istream& in, Stack<T>& s) {

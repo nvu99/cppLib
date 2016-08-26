@@ -35,7 +35,7 @@ template <typename T> void LinkedList<T>::freeMemoryHelper(ListNode<T>*& node) {
     delete node;
 }
 
-template <typename T> void LinkedList<T>::add(T value) {
+template <typename T> void LinkedList<T>::add(T& value) {
     if (mysize == 0) {
         front = new ListNode<T>(value);
         last = front;
@@ -47,7 +47,7 @@ template <typename T> void LinkedList<T>::add(T value) {
     mysize++;
 }
 
-template <typename T> void LinkedList<T>::insert(int index, T value) {
+template <typename T> void LinkedList<T>::insert(int index, T& value) {
     checkRange(index, mysize);
     ListNode<T>* newNode = new ListNode<T>(value);
     if (index == 0) {
@@ -89,7 +89,7 @@ template <typename T> T LinkedList<T>::get(int i) {
     return LinkedList<T>::operator [](i);
 }
 
-template <typename T> void LinkedList<T>::set(int index, T value) {
+template <typename T> void LinkedList<T>::set(int index, T& value) {
     checkRange(index, mysize - 1);
     if (index == mysize - 1) last->value = value;
     else {
@@ -146,12 +146,6 @@ template <typename T> LinkedList<T> LinkedList<T>::subList(int start, int length
         result.add(node->value);
         node = node->next;
     } return result;
-}
-
-template <typename T> bool operator ==(LinkedList<T>& list1, LinkedList<T>& list2) {
-    if (list1.size() != list2.size()) return false;
-    if (list1.toString() == list2.toString()) return true;
-    else return false;
 }
 
 template <typename T> bool operator !=(LinkedList<T>& list1, LinkedList<T>& list2) {
